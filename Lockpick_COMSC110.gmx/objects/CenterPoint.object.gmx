@@ -3,99 +3,11 @@
   <spriteName>sprite0</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>2</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="0" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>605</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>Create tracker for touch</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if (instance_exists(TouchTracker) == false){
-    instance_create(device_mouse_x(0),device_mouse_y(0),TouchTracker);
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="1" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>605</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>Destroy Touch Tracker</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>instance_destroy(TouchTracker);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -113,13 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var finger = instance_find(TouchTracker,0)
+            <string>///Create TouchTracker
 
-var angle = point_direction(x,y,(finger).x,(finger).y);
-
-var length = point_distance(x,y,(finger).x,(finger).y);
-
-
+if (instance_exists(TouchTracker) != true){
+    if (device_mouse_check_button(0,mb_left))
+    {
+        instance_create(self.x,self.y,TouchTracker);
+    }   
+}
 </string>
           </argument>
         </arguments>
@@ -142,13 +55,16 @@ var length = point_distance(x,y,(finger).x,(finger).y);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite(sprite0,0,self.x,self.y);
+            <string>///draw lock bar
 
-draw_set_colour(c_black);
-draw_set_alpha(1);
-show_debug_message("Drawing");
-draw_text(self.x + 30,self.y + 60,"X:" + string(device_mouse_x(0)));
-draw_text(self.x + 30,self.y + 80,"Y:" + string(device_mouse_y(0)));
+if (instance_exists(TouchTracker)){
+
+    var finger = instance_find(TouchTracker,0)
+    
+    if ((finger).y &lt; self.y){
+        draw_line_width(self.x,self.y,(finger).x,(finger).y,10);
+    }
+}
 </string>
           </argument>
         </arguments>

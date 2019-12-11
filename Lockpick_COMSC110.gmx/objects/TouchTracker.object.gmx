@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>MouseX = device_mouse_x(0);
+            <string>///Set position to touch
+MouseX = device_mouse_x(0);
 MouseY = device_mouse_y(0);
 
 
@@ -37,6 +38,31 @@ y = MouseY;
 
 
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//Check if screen if still being touched
+
+if (device_mouse_check_button(0,mb_left) == false){
+    instance_destroy(self);
+}
 </string>
           </argument>
         </arguments>
