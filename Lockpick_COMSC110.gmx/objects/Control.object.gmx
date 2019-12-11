@@ -186,10 +186,12 @@ else {
 
 var center = instance_find(CenterPoint,0);
 
+draw_set_circle_precision(32); 
+
 draw_circle_colour(center.x,center.y,400,c_black,c_black,false)
-draw_circle_colour(center.x,center.y,380,c_fuchsia,c_fuchsia,false)
+draw_circle_colour(center.x,center.y,380,c_ltgray,c_ltgray,false)
 draw_circle_colour(center.x,center.y,200,c_black,c_black,false);
-draw_circle_colour(center.x,center.y,180,c_blue,c_blue,false);
+draw_circle_colour(center.x,center.y,180,c_olive,c_olive,false);
 
 draw_rectangle_colour(0,center.y,1080,center.y+410,c_teal,c_teal,c_teal,c_teal,false);
 </string>
@@ -244,9 +246,11 @@ draw_rectangle(x1+1,y1+1,x2+1,y2+1,true)
             <kind>1</kind>
             <string>///draw score and picks remaining;
 
-draw_text_transformed_colour(50,1500,("Score: " + string(score)), 4,4.5,0,c_black,c_black,c_black,c_black,1);
+draw_set_font(Main);
 
-draw_text_transformed_colour(50,1580,("Picks Remaining: " + string(global.picks)), 4,4.5,0,c_black,c_black,c_black,c_black,1);
+draw_text_transformed_colour(50,1500,("Score: " + string(score)), 1,1,0,c_black,c_black,c_black,c_black,1);
+
+draw_text_transformed_colour(50,1580,("Picks Remaining: " + string(global.picks)), 1,1,0,c_black,c_black,c_black,c_black,1);
 </string>
           </argument>
         </arguments>

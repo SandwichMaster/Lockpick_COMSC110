@@ -16,6 +16,9 @@
     <script>scripts\CheckAngle.gml</script>
     <script>scripts\PickHealth.gml</script>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\Main</font>
+  </fonts>
   <objects name="objects">
     <object>objects\CenterPoint</object>
     <object>objects\TouchTracker</object>
